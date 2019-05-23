@@ -1,0 +1,3 @@
+version: "1"
+domain: airshipit.org
+repo: github.com/keleustes/cluster-api-provider-airship

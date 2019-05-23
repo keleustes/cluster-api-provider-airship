@@ -1,0 +1,58 @@
+required = [
+    "github.com/emicklei/go-restful",
+    "github.com/onsi/ginkgo", # for test framework
+    "github.com/onsi/gomega", # for test matchers
+    "k8s.io/client-go/plugin/pkg/client/auth/gcp", # for development against gcp
+    "k8s.io/code-generator/cmd/client-gen", # for go generate
+    "k8s.io/code-generator/cmd/deepcopy-gen", # for go generate
+    "sigs.k8s.io/controller-tools/cmd/controller-gen", # for crd/rbac generation
+    "sigs.k8s.io/controller-runtime/pkg/client/config",
+    "sigs.k8s.io/controller-runtime/pkg/controller",
+    "sigs.k8s.io/controller-runtime/pkg/handler",
+    "sigs.k8s.io/controller-runtime/pkg/manager",
+    "sigs.k8s.io/controller-runtime/pkg/runtime/signals",
+    "sigs.k8s.io/controller-runtime/pkg/source",
+    "sigs.k8s.io/testing_frameworks/integration",
+    "k8s.io/apiextensions-apiserver/pkg/apis/apiextensions/v1beta1",
+    "github.com/golang/protobuf/proto",
+    #"github.com/kubekit99/airship-go-api/promenade/client",
+    #"github.com/kubekit99/airship-go-api/shipyard/client",
+    #"github.com/kubekit99/airship-go-api/deckhand/client",
+    #"github.com/kubekit99/airship-go-api/deckhand/services/deckhand",
+    #"github.com/kubekit99/airship-go-api/armada/client",
+    #"github.com/kubekit99/airship-go-api/armada/services/armada",
+    #"github.com/kubekit99/airship-go-api/drydock/client",
+    #"github.com/kubekit99/airship-go-api/drydock/services/drydock",
+    ]
+
+[prune]
+  go-tests = true
+  unused-packages = true
+
+  [[prune.project]]
+  name = "sigs.k8s.io/cluster-api"
+  unused-packages = false
+
+[[constraint]]
+  name = "sigs.k8s.io/cluster-api"
+  version = "0.1.1"
+
+# STANZAS BELOW ARE GENERATED AND MAY BE WRITTEN - DO NOT MODIFY BELOW THIS LINE.
+
+[[constraint]]
+  name="github.com/golang/protobuf"
+  version="v1.2.0"
+
+[[constraint]]
+  name="sigs.k8s.io/controller-runtime"
+  version="v0.1.10"
+
+[[constraint]]
+  name="sigs.k8s.io/controller-tools"
+  version="v0.1.9"
+
+# For dependency below: Refer to issue https://github.com/golang/dep/issues/1799
+[[override]]
+name = "gopkg.in/fsnotify.v1"
+source = "https://github.com/fsnotify/fsnotify.git"
+version="v1.4.7"

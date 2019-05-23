@@ -1,0 +1,102 @@
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  creationTimestamp: null
+  labels:
+    controller-tools.k8s.io: "1.0"
+  name: airshipmachineproviderspecs.airshipprovider.airshipit.org
+spec:
+  group: airshipprovider.airshipit.org
+  names:
+    kind: AirshipMachineProviderSpec
+    plural: airshipmachineproviderspecs
+  scope: Namespaced
+  validation:
+    openAPIV3Schema:
+      properties:
+        apiVersion:
+          description: 'APIVersion defines the versioned schema of this representation
+            of an object. Servers should convert recognized schemas to the latest
+            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources'
+          type: string
+        baremetalspec:
+          properties:
+            addressing:
+              items:
+                properties:
+                  address:
+                    type: string
+                  network:
+                    type: string
+                type: object
+              type: array
+            hardwareProfile:
+              type: string
+            hostProfile:
+              type: string
+            interfaces:
+              type: object
+            metadata:
+              properties:
+                bootMac:
+                  type: string
+                ownerData:
+                  type: object
+                rack:
+                  type: string
+                tags:
+                  items:
+                    type: string
+                  type: array
+              type: object
+            oob:
+              properties:
+                account:
+                  type: string
+                credetial:
+                  description: AdditionalProperties map[string]interface{} `json:"-,omitempty"`
+                  type: string
+                network:
+                  type: string
+                type:
+                  type: string
+              type: object
+            platform:
+              properties:
+                image:
+                  type: string
+                kernel:
+                  type: string
+                kernelParams:
+                  type: object
+              type: object
+            primaryNetwork:
+              type: string
+            storage:
+              properties:
+                physicalDevices:
+                  type: object
+                volumeGroups:
+                  type: object
+              type: object
+          type: object
+        kind:
+          description: 'Kind is a string value representing the REST resource this
+            object represents. Servers may infer this from the endpoint the client
+            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds'
+          type: string
+        metadata:
+          type: object
+        roles:
+          items:
+            type: string
+          type: array
+      required:
+      - baremetalspec
+  version: v1alpha1
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []
